@@ -19,7 +19,7 @@
     "web-vitals": "^4.2.4"
   },
   "scripts": {
-    "start": "set PORT=3001 && react-scripts start",
+    "start": "set PORT=3002 && react-scripts start",
     "start:network": "set PORT=3001 && set HOST=0.0.0.0 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

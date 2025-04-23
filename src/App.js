@@ -210,8 +210,7 @@ function App() {
                   <span className="text-blue-600">Fun & Easy</span>
                 </h1>
                 <p className={`text-lg sm:text-xl mb-8 max-w-2xl mx-auto ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                  Join thousands of kids across India discovering their rights through exciting adventures, 
-                  games, and interactive stories. Start your journey to become a Legal Champion today!
+                  Embark on an exciting journey with thousands of kids across India to learn about your rights through thrilling adventures, fun games, and interactive stories. Start your path to becoming a Legal Champion today!
                 </p>
                 
                 {/* Start Playing Button */}
@@ -336,10 +335,10 @@ function App() {
                     className="w-full h-48 object-cover rounded-lg mb-4"
                   />
                   <h3 className={`text-xl font-bold mb-3 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
-                    Adventure Mode 
+                    Simulated Learning 
                   </h3>
                   <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                    Embark on exciting quests to learn about your rights while helping others!
+                  Dive into immersive simulations to explore your rights and make a difference by helping others along the way!
                   </p>
                 </motion.div>
 
@@ -560,10 +559,10 @@ function App() {
                 setShowEmergencyHelp(true);
                 localStorage.setItem('showEmergencyHelp', 'true');
               }}
-              className="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2"
+              className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full shadow-lg flex items-center gap-1 text-sm"
             >
-              <FaExclamationTriangle />
-              <span className="font-semibold">Emergency Help</span>
+              <FaExclamationTriangle className="text-xs" />
+              <span className="font-medium">Emergency Help</span>
             </motion.button>
             {showEmergencyHelp && (
               <motion.button
@@ -571,9 +570,9 @@ function App() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.5 }}
                 onClick={handleEmergencyClose}
-                className="bg-red-500 hover:bg-red-600 text-white p-2 rounded-full shadow-lg"
+                className="bg-red-500 hover:bg-red-600 text-white p-1 rounded-full shadow-lg"
               >
-                <FaTimes className="text-xl" />
+                <FaTimes className="text-sm" />
               </motion.button>
             )}
           </div>
@@ -782,8 +781,14 @@ Mumbai, Maharashtra 400031</li>
 
               <div className={`mt-8 pt-8 border-t ${darkMode ? 'border-gray-800' : 'border-gray-200'}`}>
                 <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                  <div className={`text-center ${darkMode ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-300 hover:text-blue-500`}>
+                  <div className={`${darkMode ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-300 hover:text-blue-500`}>
                      Legal Champs.
+                     <div className={`mt-2 text-sm ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>
+                       Legal Advisor: Mr. Rajesh Bhushan, LLB (Hon), Senior Advocate
+                       <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">
+                         ✓ Verified by legal expert
+                       </span>
+                     </div>
                   </div>
                   <div>
                     <ul className={`flex space-x-6 flex-wrap ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>

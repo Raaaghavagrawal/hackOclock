@@ -165,7 +165,7 @@ const MiniGame = ({ darkMode }) => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(true)}
-        className="fixed left-8 bottom-28 w-16 h-16 rounded-full bg-blue-500 text-white shadow-lg flex items-center justify-center z-50 text-2xl"
+        className={`fixed ${isOpen ? 'left-4 bottom-4 opacity-70 z-[60]' : 'left-8 bottom-20 z-50'} w-12 h-12 rounded-full bg-blue-500 text-white shadow-lg flex items-center justify-center text-xl transition-all duration-300`}
       >
         🐦
       </motion.button>
