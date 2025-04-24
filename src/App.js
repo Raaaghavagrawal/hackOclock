@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { FaPhone, FaExclamationTriangle, FaHeadset, FaHandsHelping, FaShieldAlt, FaTwitter, FaLinkedin, FaGithub, FaExternalLinkAlt, FaTimes, FaGlobe } from 'react-icons/fa';
@@ -27,6 +27,7 @@ function App() {
   const [showLearn, setShowLearn] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
   const [selectedGame, setSelectedGame] = useState(null);
+  const feedbackRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,8 +62,6 @@ function App() {
       // );
         //  Hello Fellow Stalker. There nothing here for you :). btw thx for checking my profile lol or you just stalking my hakathon project? cheeck out my other repos as well i guess then
       // why it is not working :(
-
-      
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -74,58 +73,10 @@ function App() {
       const scrollPosition = window.scrollY;
       const maxScroll = 500;
       // const position = Math.max(0, Math.min(50, (scrollPosition / maxScroll) * 50));
-      
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    // Initialize chatbot
-    const initializeChatbot = () => {
-      // Chatbase initialization script
-      const initChatbase = () => {
-        if (!window.chatbase || window.chatbase("getState") !== "initialized") {
-          window.chatbase = (...args) => {
-            if (!window.chatbase.q) {
-              window.chatbase.q = [];
-            }
-            window.chatbase.q.push(args);
-          };
-          window.chatbase = new Proxy(window.chatbase, {
-            get(target, prop) {
-              if (prop === "q") {
-                return target.q;
-              }
-              return (...args) => target(prop, ...args);
-            }
-          });
-        }
-      };
-
-      // Load the Chatbase script
-      const loadChatbaseScript = () => {
-        const script = document.createElement("script");
-        script.src = "https://www.chatbase.co/embed.min.js";
-        script.id = "gcmQxoyUWU8k1Nl78Fz-F";
-        script.setAttribute("domain", "www.chatbase.co");
-        document.body.appendChild(script);
-      };
-
-      initChatbase();
-      loadChatbaseScript();
-    };
-
-    // Initial setup
-    initializeChatbot();
-
-    return () => {
-      const script = document.getElementById("gcmQxoyUWU8k1Nl78Fz-F");
-      if (script) {
-        script.remove();
-      }
-    };
   }, []);
 
   const handleGameClose = () => {
@@ -183,6 +134,10 @@ function App() {
     localStorage.setItem('selectedLanguage', languageCode);
   };
 
+  const scrollToFeedback = () => {
+    feedbackRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <GameProvider>
       <Router>
@@ -194,6 +149,7 @@ function App() {
             onLearnClick={handleLearnClick}
             onLanguageChange={handleLanguageChange}
             onStartPlaying={handleStartPlaying}
+            onFeedbackClick={scrollToFeedback}
           />
 
           <main className="container mx-auto px-6 pt-24 pb-16">
@@ -216,14 +172,24 @@ function App() {
                 {/* Start Playing Button */}
                 <div className="flex gap-4 justify-center">
                   {!showGameSections && (
-                    <motion.button 
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={handleStartPlaying}
-                      className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors shadow-lg"
-                    >
-                      Start Playing Now
-                    </motion.button>
+                    <>
+                      <motion.button 
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={handleStartPlaying}
+                        className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors shadow-lg"
+                      >
+                        Start Playing Now
+                      </motion.button>
+                      <motion.button 
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={scrollToFeedback}
+                        className="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors shadow-lg"
+                      >
+                        Share Feedback
+                      </motion.button>
+                    </>
                   )}
                 </div>
 
@@ -234,11 +200,7 @@ function App() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
                 >
-                  {/* <img 
-                    src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
-                    alt="Children learning together"
-                    className="rounded-2xl shadow-2xl"
-                  /> */}
+                  
                   <div className="grid grid-cols-3 gap-8 mt-8">
                     <motion.div 
                       initial={{ opacity: 0, y: 20 }}
@@ -285,8 +247,8 @@ function App() {
             animate={{ opacity: scrolled ? 0 : 1 }}
             transition={{ 
               delay: 3,
-              duration: 1.2,        // Longer fade in duration
-              opacity: { duration: 0.15 }  // Even shorter fade out duration
+              duration: 1.2, 
+              opacity: { duration: 0.15 }
             }}
             className="fixed bottom-1 left-1/2 transform -translate-x-1/2 text-center z-40"
           >
@@ -551,7 +513,7 @@ function App() {
           </section>*/}
 
           {/* Emergency Help Button with Close Button */}
-          <div className="fixed left-8 bottom-8 flex items-center gap-2 z-50">
+          <div className="fixed left-8 bottom-8 flex items-center gap-2 z-40">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -680,15 +642,16 @@ function App() {
 
           {/* Add this before the footer */}
           <section 
-            onClick={() => setShowFeedback(true)}
-            className={`w-full py-12 cursor-pointer transition-colors ${
+            id="feedback-section"
+            ref={feedbackRef}
+            className={`w-full py-12 transition-colors ${
               darkMode 
-                ? 'bg-gray-800 hover:bg-gray-750' 
-                : 'bg-gray-50 hover:bg-gray-100'
+                ? 'bg-gray-800' 
+                : 'bg-gray-50'
             }`}
           >
             <div className="container mx-auto px-4">
-              <div className="max-w-4xl mx-auto text-center">
+              <div className="max-w-4xl mx-auto text-center mb-8">
                 <h2 className={`text-3xl font-bold mb-4 ${
                   darkMode ? 'text-white' : 'text-gray-900'
                 }`}>
@@ -699,34 +662,12 @@ function App() {
                 }`}>
                   We value your input! Help us improve by sharing your thoughts and experiences.
                 </p>
-                <div className={`inline-flex items-center gap-2 text-lg font-medium ${
-                  darkMode ? 'text-blue-400' : 'text-blue-600'
-                }`}>
-                  Click here to open feedback form 
-                  <svg 
-                    className="w-5 h-5" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      strokeWidth={2} 
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </div>
               </div>
+              
+              <FeedbackForm darkMode={darkMode} />
             </div>
           </section>
-
-          <FeedbackForm 
-            isOpen={showFeedback} 
-            onClose={() => setShowFeedback(false)} 
-            darkMode={darkMode}
-          />
-
+          
           <footer className={`border-t ${darkMode ? 'border-gray-800 bg-gray-900' : 'border-gray-200 bg-white'}`}>
             <div className="container mx-auto px-6 py-8">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -741,8 +682,7 @@ function App() {
                   <ul className={`space-y-2 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                     <li className="transition-colors duration-300 hover:text-blue-500">Email: dial1098@childlineindia.org.in</li>
                     <li className="transition-colors duration-300 hover:text-blue-500">Phone: +91-22-68251098</li>
-                    <li className="transition-colors duration-300 hover:text-blue-500">Address: 27A, B- wing, G D Ambekar Road, Wadala East,
-Mumbai, Maharashtra 400031</li>
+                    <li className="transition-colors duration-300 hover:text-blue-500">27A, B- wing, Chanchal Smruti, G D Ambekar Road, Shriram Industrial Estate, Kohinoor Mill, Wadala East, Mumbai, Maharashtra 400031</li>
                   </ul>
                 </div>
                 <div className="transform transition-transform duration-300 hover:scale-105">

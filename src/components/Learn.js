@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const Learn = ({ darkMode }) => {
-  // Sample video data - you can replace with your own videos
   const videos = [
     {
       id: 1,

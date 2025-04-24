@@ -228,18 +228,18 @@ const LoginModal = ({ darkMode, onClose, onLogin }) => {
 
           <button
             type="submit"
-            className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
           >
             {isLogin ? 'Login' : 'Create Account'}
           </button>
         </form>
 
-        <div className="mt-4 text-center">
+        <div className="mt-6 text-center">
           <button
             onClick={() => setIsLogin(!isLogin)}
-            className={`text-blue-500 hover:text-blue-600 ${darkMode ? 'text-blue-400' : ''}`}
+            className={`text-blue-500 hover:text-blue-600 ${darkMode ? 'text-blue-400 hover:text-blue-300' : ''} font-medium text-base`}
           >
-            {isLogin ? 'Need an account? Sign up' : 'Already have an account? Login'}
+            {isLogin ? 'Need an account? Sign Up' : 'Already have an account? Log In'}
           </button>
         </div>
       </motion.div>

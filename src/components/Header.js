@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const Header = ({ darkMode, setDarkMode, onCommunityClick, onLearnClick, onLanguageChange, onStartPlaying }) => {
+const Header = ({ darkMode, setDarkMode, onCommunityClick, onLearnClick, onLanguageChange, onStartPlaying, onFeedbackClick }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [ageDropdownOpen, setAgeDropdownOpen] = useState(false);
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
@@ -30,7 +30,8 @@ const Header = ({ darkMode, setDarkMode, onCommunityClick, onLearnClick, onLangu
     { name: 'Home', handler: undefined },
     { name: 'Games', handler: onStartPlaying },
     { name: 'Learn', handler: onLearnClick },
-    { name: 'Community', handler: onCommunityClick }
+    { name: 'Community', handler: onCommunityClick },
+    { name: 'Feedback', handler: onFeedbackClick }
   ];
 
   const handleAgeSelect = (age) => {
