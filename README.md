@@ -1,17 +1,18 @@
 
 
-<h1 align="center" id="title">de_coders [SAPP 1176]</h1>
+<h1 align="center" id="title">de_coders</h1>
 
-<p align="center"><img src="https://socialify.git.ci/ShiiiivanshSingh/TECHNOVATION-HACKATHON-2025-Entry/image?custom_description=Team+SAPP-1176&amp;description=1&amp;language=1&amp;name=1&amp;stargazers=1&amp;theme=Dark" alt="project-image"></p>
+<p align="center"><img src="https://socialify.git.ci/Raaaghavagrawal/hackOclock/image?font=KoHo&language=1&name=1&owner=1&stargazers=1&theme=Dark" alt="project-image"></p>
 
 <h2>❤️ Team Members</h2>
 
   
 
 
-*   Shivansh Pratap Singh
-*   Raghav Agrawal
 *   Roohani Sharma
+*   Shivani Bhati
+*   Salil Gupta
+*   Raghav Agrawal 
 <h1 align="center">🚀 Demo</h1>
 
 
