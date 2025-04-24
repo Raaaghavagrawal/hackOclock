@@ -724,7 +724,7 @@ function App() {
                   <div className={`${darkMode ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-300 hover:text-blue-500`}>
                      Legal Champs.
                      <div className={`mt-2 text-sm ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>
-                       Legal Advisor: Mr. Rajesh Bhushan, LLB (Hon), Senior Advocate
+                       Legal Advisor: Mr. Rajesh Bhushan, BA LLB, Senior Advocate, J&K High Court
                        <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">
                          ✓ Verified by legal expert
                        </span>
