@@ -18,7 +18,7 @@
 
 <div align="center">
 
-[![LegalChamps](https://img.shields.io/badge/Visit-LegalChamps-blue?style=for-the-badge)](https://legalchamps.vercel.app)
+[![LegalChamps](https://img.shields.io/badge/Visit-LegalChamps-blue?style=for-the-badge)](https://legalchamps-hackoclock.vercel.app/)
 
 </div>
 
